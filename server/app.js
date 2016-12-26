@@ -16,11 +16,6 @@ import passportConfig from './config/passport.js';
 import userController from './controllers/userController.js';
 import db from './model';
 const SALT_WORK_FACTOR = 12;
-import seedData from './lib/seedData.js';
-
-import courseController from './controllers/courseController.js';
-import videoController from './controllers/videoController.js';
-import qandaController from './controllers/qandaController.js';
 
 const compiler = webpack(config);
 const middleware = webpackMiddleware(compiler, {
@@ -56,7 +51,6 @@ db
   .sync()
   .then((err) => {
     console.log('connected to database...');
-    seedData(db);
   });
 
 // Static Pages
@@ -77,17 +71,15 @@ app.get('/signUp', (req, res, next) => {
 });
 
 // Api Calls
-app.get('/api/courses', userController.isAuthenticated, courseController.get);
-app.get('/api/videos', videoController.get);
-app.get('/api/qanda', qandaController.get);
 
 // Auth Routes
 app.post('/authenticate', 
   passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/login'
-  });
+  })
 );
+
 app.post('/api/signUp', userController.signUp);
 app.get('/logout', userController.destroySession);
 app.get('/api/getUserInfo', userController.getUserInfo);
