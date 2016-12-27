@@ -16,6 +16,9 @@ import passportConfig from './config/passport.js';
 import userController from './controllers/userController.js';
 import db from './model';
 const SALT_WORK_FACTOR = 12;
+import seedData from './lib/seedData.js';
+
+import goalsController from './controllers/goalsController.js';
 
 const compiler = webpack(config);
 const middleware = webpackMiddleware(compiler, {
@@ -51,6 +54,7 @@ db
   .sync()
   .then((err) => {
     console.log('connected to database...');
+    seedData(db);
   });
 
 // Static Pages
@@ -71,6 +75,9 @@ app.get('/signUp', (req, res, next) => {
 });
 
 // Api Calls
+app.get('/goals/:userId*?', goalsController.get);
+app.post('/goals', goalsController.post);
+app.get('/results', goalsController.results);
 
 // Auth Routes
 app.post('/authenticate', 

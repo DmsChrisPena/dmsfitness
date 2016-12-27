@@ -3,7 +3,7 @@ import path from 'path';
 import Sequelize from 'sequelize';
 import lodash from 'lodash';
 
-const sequelize = new Sequelize('learnenergy_schema', 'root', 'winsbee');
+const sequelize = new Sequelize('dmsfitness_schema', 'root', 'winsbee');
 const db = {};
 
 fs
@@ -16,6 +16,10 @@ fs
 
 		db[model.name] = model;
 	});
+
+// Relationship
+db.Goals.belongsTo(db.User);
+db.User.hasOne(db.Goals);
 
 export default lodash.extend({
 	sequelize: sequelize,
