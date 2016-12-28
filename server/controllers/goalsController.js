@@ -10,13 +10,41 @@ goalsController.get = (req, res, next) => {
 
 goalsController.post = (req, res, next) => {
 	const {
+		username,
+		email,
+		firstName,
+		lastName,
+		heightFeet,
+		heightInches,
+		workoutsPerWeek,
+		foodLoggedPerWeek,
 		goalWeight,
+		myFitnessPal,
+		otherSuggestions,
 		userId
 	} = req.body;
 
-	db.Goals.build({UserId: userId, goalWeight: goalWeight}).save();
+	db.User.build({
+		username,
+		password: "dmsFitness",
+		email,
+		firstName,
+		lastName,
+		heightFeet,
+		heightInches,
+		goalWeight,
+		myFitnessPalName: myFitnessPal
+	}).save().then((data) => {
+		db.Goals.build({
+			UserId: data.id, 
+			goalWeight, 
+			foodLoggedPerWeek, 
+			workoutsPerWeek,
+			otherSuggestions
+		}).save();
+	});
 
-	return res.json(req.body);
+	return res.render('thanks.html');
 };
 
 goalsController.results = (req, res, next) => {

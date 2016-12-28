@@ -18,7 +18,17 @@ export default function(sequelize, DataTypes) {
             validate: {
                 notEmpty: true
             }
-        }
+        },
+        firstName: DataTypes.STRING,
+        lastName: DataTypes.STRING,
+        email: DataTypes.STRING,
+        avatar: DataTypes.STRING,
+        heightFeet: DataTypes.INTEGER,
+        heightInches: DataTypes.INTEGER,
+        startingWeight: DataTypes.FLOAT,
+        publicWeight: DataTypes.BOOLEAN,
+        okayWithBeingRef: DataTypes.BOOLEAN,
+        myFitnessPalName: DataTypes.STRING
     },
     {
         classMethods: {

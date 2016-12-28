@@ -3,7 +3,12 @@ import path from 'path';
 import Sequelize from 'sequelize';
 import lodash from 'lodash';
 
-const sequelize = new Sequelize('dmsfitness_schema', 'root', 'winsbee');
+//const sequelize = new Sequelize('dmsfitness_schema', 'root', 'winsbee');
+const sequelize = new Sequelize('dmsfitness_schema', 'winsbee', '1q0p2w9o', {
+	host:"104.198.251.168",
+	logging: console.log,
+	dialect: 'mysql',
+})
 const db = {};
 
 fs

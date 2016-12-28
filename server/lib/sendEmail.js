@@ -1,4 +1,4 @@
-const sendEmail = (username) => {
+const sendEmail = (userData, goalsData) => {
 	var nodemailer = require('nodemailer');
 
 	// create reusable transporter object using the default SMTP transport
@@ -9,7 +9,7 @@ const sendEmail = (username) => {
 	    from: '"Chris Pena" <chris@effortless-solutions.com>', // sender address
 	    to: 'cpena@dmshouston.com', // list of receivers
 	    subject: 'Dms Fitness', // Subject line
-	    html: `${username} just finished there form. go check it out.` // html body
+	    html: `<h2>Spring into Fitness by DMS</h2><p>Welcome to the challenge. Sign into the portal at URL to read the rules and how to get started.</p><p>Username: ${userData.username}</p><p>Password: dmsFitness</p>` // html body
 	};
 
 	// send mail with defined transport object

@@ -1,12 +1,145 @@
 <!DOCTYPE>
 <html>
-	<head>DMS Fitness Challenge</head>
-	<body>
-		<form action="/goals" method="post">
-			<input type="text" name="goalWeight">
-			<input type="text" name="userId" value={{userId}}>
-			<button type="submit">Submit</button>
+	<head>
+		<title>DMS Fitness Challenge</title>
+		 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+		 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<style>
+			html, body {
+				background: #B2DFDB;
+			}
+			#trian {
+				width: 100%;
+				height: 100%;
+				display: flex;
+				justify-content: center;
+				align-items: flex-start;
+			}
 
-		</form>
+			.form-card {
+				background: white;
+				width: 33%;
+				min-width: 400px;
+				box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 4px;
+				margin-top: 16px;
+				padding: 8px;
+			}
+
+			.row-container-2 {
+				display: flex;
+			}
+			.row-container-2 > .input-field {
+				width: 50%;
+			}
+
+			label {
+				font-size: 12px !important;
+			}
+
+			.row-container-2 > .input-field:nth-child(2) {
+				margin-left: 6px;
+			}
+
+			.row-container-2-select {
+				margin-top: 12px;
+				margin-bottom: 12px;
+			}
+			.bottom-submit {
+				width: 100%;
+			}
+
+			@media (max-width: 1000px) {
+				.form-card {
+					width: 100%;
+					min-width: 100%;
+				}
+			}
+
+		</style>
+	</head>
+	<body>
+		<h4 style="text-align: center; margin: 0px; font-weight: 300; color: #424242; margin-top: 16px;">Spring into Fitness by <b>DMS</b></h4>
+		<div id="trian">
+			<div class="form-card">
+				<form action="/goals" method="post">
+					<div class="row-container-2">
+						<div class="input-field">
+						  <input id="username" name="username" type="text" class="validate">
+						  <label for="username">Username</label>
+						</div>
+						<div class="input-field">
+						  <input id="email" name="email" type="email" class="validate">
+						  <label for="email">Email</label>
+						</div>
+					</div>
+					<div class="row-container-2">
+						<div class="input-field">
+						  <input id="firstName" name="firstName" type="text" class="validate">
+						  <label for="firstName">First Name</label>
+						</div>
+						<div class="input-field">
+						  <input id="lastName" name="lastName" type="text" class="validate">
+						  <label for="lastName">Last Name</label>
+						</div>
+					</div>
+					<div class="row-container-2">
+						<div class="input-field">
+						  <input id="heightFeet" name="heightFeet" type="text" class="validate">
+						  <label for="heightFeet">Height - Feet</label>
+						</div>
+						<div class="input-field">
+						  <input id="heightInches" name="heightInches" type="text" class="validate">
+						  <label for="heightInches">Height - Inches "</label>
+						</div>
+					</div>
+					<div class="row-container-2-select">
+							<label>How many times a week will you workout?</label>
+							<select style="font-size: 12px;" id="workoutsPerWeek" name="workoutsPerWeek" class="browser-default">
+							  <option value="" disabled selected>Choose your option</option>
+							  <option value="1">1</option>
+							  <option value="2">2</option>
+							  <option value="3">3</option>
+							  <option value="4">4</option>
+							  <option value="5">5</option>
+							  <option value="6">6</option>
+							  <option value="7">7</option>
+							</select>
+					</div>
+					<div class="row-container-2-select">
+						<label>How many times a week will you log your food?</label>
+						<select style="font-size: 12px;" id="foodLoggedPerWeek" name="foodLoggedPerWeek" class="browser-default">
+						  <option value="" disabled selected>Choose your option</option>
+						  <option value="1">1</option>
+						  <option value="2">2</option>
+						  <option value="3">3</option>
+						  <option value="4">4</option>
+						  <option value="5">5</option>
+						  <option value="6">6</option>
+						  <option value="7">7</option>
+						</select>
+					</div>
+					<div class="row-container-2">
+						<div class="input-field">
+						  <input id="goalWeight" name="goalWeight" type="text" class="validate">
+						  <label for="goalWeight">Goal Weight</label>
+						</div>
+						<div class="input-field">
+						  <input id="myFitnessPal" name="myFitnessPal" type="text" class="validate">
+						  <label for="myFitnessPal">MyFitnessPal Username</label>
+						</div>
+					</div>
+					<div class="row-container-2-select">
+						<div class="input-field">
+						  <textarea id="otherSuggestions" name="otherSuggestions" class="materialize-textarea"></textarea>
+						  <label for="otherSuggestions">Other Suggestions</label>
+						</div>
+					</div>
+					<input hidden="true" type="text" name="userId" value={{userId}}>
+					<button type="submit" class="waves-effect waves-light btn bottom-submit">Submit</button>
+				</form>
+			</div>
+		</div>
+		<script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+		 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
 	</body>
 </html>
